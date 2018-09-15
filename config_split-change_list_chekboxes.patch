@@ -1,0 +1,31 @@
+diff --git a/src/Form/ConfigSplitEntityForm.php b/src/Form/ConfigSplitEntityForm.php
+index aca9a00..a9ec4a5 100644
+--- a/src/Form/ConfigSplitEntityForm.php
++++ b/src/Form/ConfigSplitEntityForm.php
+@@ -85,7 +85,7 @@ class ConfigSplitEntityForm extends EntityForm {
+     // Add the existing ones with the machine name so they do not get lost.
+     $modules = $modules + array_combine(array_keys($config->get('module')), array_keys($config->get('module')));
+     $form['blacklist_fieldset']['module'] = [
+-      '#type' => 'select',
++      '#type' => 'checkboxes',
+       '#title' => $this->t('Modules'),
+       '#description' => $this->t('Select modules to split. Configuration depending on the modules is automatically split off completely as well.'),
+       '#options' => $modules,
+@@ -115,7 +115,7 @@ class ConfigSplitEntityForm extends EntityForm {
+ 
+     $options = array_combine($this->configFactory()->listAll(), $this->configFactory()->listAll());
+     $form['blacklist_fieldset']['blacklist_select'] = [
+-      '#type' => 'select',
++      '#type' => 'checkboxes',
+       '#title' => $this->t('Configuration items'),
+       '#description' => $this->t('Select configuration to split. Configuration depending on split modules does not need to be selected here specifically.'),
+       '#options' => $options,
+@@ -143,7 +143,7 @@ class ConfigSplitEntityForm extends EntityForm {
+     ];
+ 
+     $form['graylist_fieldset']['graylist_select'] = [
+-      '#type' => 'select',
++      '#type' => 'checkboxes',
+       '#title' => $this->t('Configuration items'),
+       '#description' => $this->t('Select configuration to split conditionally.'),
+       '#options' => $options,
